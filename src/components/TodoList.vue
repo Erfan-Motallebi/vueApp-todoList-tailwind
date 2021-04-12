@@ -119,6 +119,11 @@ export default {
               todo.job = this.newTask;
             }
           });
+
+          this.showMessage = false;
+          this.message = "successfully edited";
+          this.showColor = "text-green-500";
+          setTimeout(() => (this.hidden = true), 3000);
           this.newTask = "";
           break;
         default:
@@ -130,6 +135,7 @@ export default {
       this.showMessage = false;
       this.message = "successfully removed";
       this.showColor = "text-blue-500";
+      setTimeout(() => (this.hidden = true), 3000);
     },
   },
 };
