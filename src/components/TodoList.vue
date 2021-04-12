@@ -1,23 +1,32 @@
 <template>
   <div class="w-full flex flex-col">
     <section class="w-1/2 m-auto">
-      <h1 class="text-center rounded shadow-lg py-3">
-        Todo Counter : {{ todoCounter }}
+      <h1 class="text-center rounded shadow-lg py-3 bg-gray-200">
+        Todo Counter : {{ todos.length }}
       </h1>
     </section>
     <section>
       <p
-        class="w-4/6 m-auto border rounded text-left p-3 mt-5 relative"
+        class="w-4/6 m-auto border rounded text-left p-3 mt-5 relative shadow-inner font-serif text-lg"
         v-for="todo in todos"
         :key="todo.id"
       >
         {{ todo.job }}
-        <button class="absolute right-0">remove</button>
+        <button class="absolute right-2 text-red-500">remove</button>
       </p>
     </section>
     <form @submit.prevent="" class="m-auto my-3">
-      <input type="text" class="border rounded" /> <br />
-      <input type="submit" value="ADD" class="w-1/2 mx-16" />
+      <input
+        type="text"
+        class="border border-gray-400 rounded placeholder-red-300 focus:placeholder-yellow-80 px-2"
+        placeholder="Your Task"
+      />
+      <br />
+      <input
+        type="submit"
+        value="Insert"
+        class="w-1/2 mx-16 border-2 rounded bg-gradient-to-tr from-yellow-700 to-indigo-500"
+      />
     </form>
   </div>
 </template>
