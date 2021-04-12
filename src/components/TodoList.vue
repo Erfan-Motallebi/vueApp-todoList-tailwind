@@ -5,24 +5,21 @@
         Todo Counter : {{ todos.length }}
       </h1>
     </section>
+    <form @submit.prevent="task()" class="m-auto my-10 w-1/2 flex">
+      <input
+        type="text"
+        class="border border-gray-400 rounded placeholder-red-300 focus:placeholder-yellow-80 px-2 w-3/4 ml-20"
+        placeholder="Your Task"
+        v-model="newTask"
+      />
+      <br />
+      <input
+        type="submit"
+        v-bind:value="buttonStyle"
+        class="mx-16 ml-10 border-2 rounded bg-gradient-to-tr from-yellow-700 to-indigo-500"
+      />
+    </form>
     <section>
-      <form
-        @submit.prevent="task()"
-        class="m-auto my-3 w-1/2 flex justify-between"
-      >
-        <input
-          type="text"
-          class="border border-gray-400 rounded placeholder-red-300 focus:placeholder-yellow-80 px-2 w-full"
-          placeholder="Your Task"
-          v-model="newTask"
-        />
-        <br />
-        <input
-          type="submit"
-          v-bind:value="buttonStyle"
-          class="w-1/3 mx-16 border-2 rounded bg-gradient-to-tr from-yellow-700 to-indigo-500"
-        />
-      </form>
       <p
         class="w-4/6 m-auto border rounded text-left p-3 mt-5 relative shadow-inner font-serif text-lg"
         v-for="todo in todos"
@@ -120,6 +117,9 @@ export default {
     },
     remove(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
+      this.showMessage = false;
+      this.message = "successfully removed";
+      this.showColor = "text-blue-500";
     },
   },
 };
