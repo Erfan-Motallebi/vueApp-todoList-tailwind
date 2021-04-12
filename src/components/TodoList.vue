@@ -31,8 +31,13 @@
         class="w-1/2 mx-16 border-2 rounded bg-gradient-to-tr from-yellow-700 to-indigo-500"
       />
     </form>
-    <section class="w-2/12 flex justify-center my-4 border rounded m-auto">
-      <h1 class="text-lg p-2 shadow-sm font-bold text-red-500">Empty Field</h1>
+    <section class="flex justify-center my-5 border rounded m-auto">
+      <h1
+        class="text-lg p-2 font-bold shadow-lg bg-gray-200"
+        v-bind:hidden="hidden"
+      >
+        <span :class="[showColor]">{{ message }}</span>
+      </h1>
     </section>
   </div>
 </template>
@@ -42,7 +47,10 @@ export default {
   data() {
     return {
       todoCounter: 0,
+      hidden: true,
       newTask: "",
+      clr: "",
+      message: "",
       todos: [
         { id: 0, job: "making a new vue-based application" },
         { id: 1, job: "make here a better world" },
@@ -50,15 +58,37 @@ export default {
       ],
     };
   },
+  computed: {
+    showMessage: {
+      set(value) {
+        this.hidden = value;
+      },
+    },
+    showColor: {
+      get() {
+        return this.clr;
+      },
+      set(color) {
+        this.clr = color;
+      },
+    },
+  },
   methods: {
     addTask() {
       if (this.newTask == "") {
-        console.error("error founded");
+        this.showMessage = false;
+        this.message = "Empty Field";
+        this.showColor = "text-red-500";
+        setTimeout(() => (this.hidden = true), 3000);
       } else {
         this.todos.push({
           id: new Date().getTime().toString(),
           job: this.newTask,
         });
+        this.showMessage = false;
+        this.message = "successfully added";
+        this.showColor = "text-green-500";
+        setTimeout(() => (this.hidden = true), 3000);
       }
     },
     remove(id) {
