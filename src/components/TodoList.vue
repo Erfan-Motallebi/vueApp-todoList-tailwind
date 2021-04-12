@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col">
+  <div class="w-full mt-5 flex flex-col">
     <section class="w-1/2 m-auto">
       <h1 class="text-center rounded shadow-lg py-3 bg-gray-200">
         Todo Counter : {{ todos.length }}
