@@ -89,6 +89,7 @@ export default {
         this.message = "successfully added";
         this.showColor = "text-green-500";
         setTimeout(() => (this.hidden = true), 3000);
+        this.newTask = "";
       }
     },
     remove(id) {
