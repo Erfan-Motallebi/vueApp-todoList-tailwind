@@ -1,13 +1,12 @@
 <template>
   <Header />
-  <todo-list></todo-list>
+  <router-view></router-view>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import TodoList from "./components/TodoList";
+import Header from "./components/Header";
 export default {
-  components: { TodoList, Header },
+  components: { Header },
 };
 </script>
 

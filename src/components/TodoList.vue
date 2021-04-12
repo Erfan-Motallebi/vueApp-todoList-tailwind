@@ -8,7 +8,7 @@
     <form @submit.prevent="task()" class="m-auto my-10 w-1/2 flex">
       <input
         type="text"
-        class="border border-gray-400 rounded placeholder-red-300 focus:placeholder-yellow-80 px-2 w-3/4 ml-20"
+        class="border border-gray-400 rounded placeholder-red-300 focus:placeholder-gray-600 px-2 w-3/4 ml-20"
         placeholder="Your Task"
         v-model="newTask"
       />
