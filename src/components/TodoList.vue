@@ -26,7 +26,10 @@
         :key="todo.id"
       >
         {{ todo.job }}
-        <button class="absolute right-20 text-red-500" @click="edit(todo.id)">
+        <button
+          class="absolute right-20 text-red-500"
+          @click="buttonChangeToEdit(todo.id)"
+        >
           edit
         </button>
         <button class="absolute right-2 text-red-500" @click="remove(todo.id)">
@@ -54,6 +57,7 @@ export default {
       newTask: "",
       buttonStyle: "Insert",
       taskMethod: "Insert",
+      editId: 0,
       clr: "",
       message: "",
       todos: [
@@ -79,7 +83,7 @@ export default {
     },
   },
   methods: {
-    edit(id) {
+    buttonChangeToEdit(id) {
       this.buttonStyle = "edit";
       this.taskMethod = "Edit";
       this.todos.find((todo) => {
@@ -87,6 +91,7 @@ export default {
           this.newTask = todo.job;
         }
       });
+      this.editId = id;
     },
     task() {
       switch (this.taskMethod) {
@@ -109,7 +114,12 @@ export default {
           }
           break;
         case "Edit":
-          this.edit();
+          this.todos.find((todo) => {
+            if (todo.id === this.editId) {
+              todo.job = this.newTask;
+            }
+          });
+          this.newTask = "";
           break;
         default:
           break;
