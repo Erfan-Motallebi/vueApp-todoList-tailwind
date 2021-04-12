@@ -31,6 +31,9 @@
         class="w-1/2 mx-16 border-2 rounded bg-gradient-to-tr from-yellow-700 to-indigo-500"
       />
     </form>
+    <section class="w-2/12 flex justify-center my-4 border rounded m-auto">
+      <h1 class="text-lg p-2 shadow-sm font-bold text-red-500">Empty Field</h1>
+    </section>
   </div>
 </template>
 
